@@ -1,0 +1,243 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ruffle-core</title>
+	<meta name="description" content="Documentation for ruffle-core">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">ruffle-core</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>Project ruffle-core</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#ruffle-core" id="ruffle-core" style="color: inherit; text-decoration: none;">
+					<h1>ruffle-core</h1>
+				</a>
+				<p>ruffle-core is the core javascript bindings to the Wasm ruffle-web binary,
+				and contains the actual public API.</p>
+				<a href="#using-ruffle-core" id="using-ruffle-core" style="color: inherit; text-decoration: none;">
+					<h2>Using ruffle-core</h2>
+				</a>
+				<p>For more examples and in-depth documentation on how to use Ruffle on your website, please
+				<a href="https://github.com/ruffle-rs/ruffle/wiki/Using-Ruffle#web">check out our wiki</a>.</p>
+				<a href="#host-ruffle" id="host-ruffle" style="color: inherit; text-decoration: none;">
+					<h3>Host Ruffle</h3>
+				</a>
+				<p>The <code>core</code> package is configured for websites that build and bundle their files themselves.
+					Simply add <code>ruffle</code> to an npm package, and use something like Webpack to actually bundle and serve
+				the files.</p>
+				<p>If you wish to use Ruffle on a website that doesn&#39;t use npm, we have a pre-bundled version which
+				we call &#39;selfhosted&#39;. Please <a href="https://github.com/ruffle-rs/ruffle/tree/master/web/packages/selfhosted">refer to its documentation</a>.</p>
+				<p>Please note that the <code>.wasm</code> file must be served properly, and some web servers may not do that
+					correctly out of the box. Please see <a href="https://github.com/ruffle-rs/ruffle/wiki/Using-Ruffle#configure-wasm-mime-type">our wiki</a>
+				for instructions on how to configure this, if you encounter a <code>Incorrect response MIME type</code> error.</p>
+				<a href="#quotplug-and-playquot" id="quotplug-and-playquot" style="color: inherit; text-decoration: none;">
+					<h3>&quot;Plug and Play&quot;</h3>
+				</a>
+				<p>If you have an existing website with flash content, you can simply include Ruffle as a script and
+				our polyfill magic will replace everything for you. No fuss, no mess.</p>
+				<pre><code class="language-html"><span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;path/to/ruffle/ruffle.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+</code></pre>
+				<a href="#javascript-api" id="javascript-api" style="color: inherit; text-decoration: none;">
+					<h3>Javascript API</h3>
+				</a>
+				<p>If you want to control the Ruffle player, you may use our Javascript API.</p>
+				<pre><code class="language-html"><span style="color: #800000">&lt;script&gt;</span>
+<span style="color: #000000FF">    </span><span style="color: #001080">window</span><span style="color: #000000FF">.</span><span style="color: #001080">RufflePlayer</span><span style="color: #000000FF"> </span><span style="color: #000000">=</span><span style="color: #000000FF"> </span><span style="color: #001080">window</span><span style="color: #000000FF">.</span><span style="color: #001080">RufflePlayer</span><span style="color: #000000FF"> </span><span style="color: #000000">||</span><span style="color: #000000FF"> {};</span>
+
+<span style="color: #000000FF">    </span><span style="color: #001080">window</span><span style="color: #000000FF">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000FF">(</span><span style="color: #A31515">&quot;DOMContentLoaded&quot;</span><span style="color: #000000FF">, () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000FF"> {</span>
+<span style="color: #000000FF">        </span><span style="color: #0000FF">let</span><span style="color: #000000FF"> </span><span style="color: #001080">ruffle</span><span style="color: #000000FF"> </span><span style="color: #000000">=</span><span style="color: #000000FF"> </span><span style="color: #001080">window</span><span style="color: #000000FF">.</span><span style="color: #001080">RufflePlayer</span><span style="color: #000000FF">.</span><span style="color: #795E26">newest</span><span style="color: #000000FF">();</span>
+<span style="color: #000000FF">        </span><span style="color: #0000FF">let</span><span style="color: #000000FF"> </span><span style="color: #001080">player</span><span style="color: #000000FF"> </span><span style="color: #000000">=</span><span style="color: #000000FF"> </span><span style="color: #001080">ruffle</span><span style="color: #000000FF">.</span><span style="color: #795E26">createPlayer</span><span style="color: #000000FF">();</span>
+<span style="color: #000000FF">        </span><span style="color: #0000FF">let</span><span style="color: #000000FF"> </span><span style="color: #001080">container</span><span style="color: #000000FF"> </span><span style="color: #000000">=</span><span style="color: #000000FF"> </span><span style="color: #001080">document</span><span style="color: #000000FF">.</span><span style="color: #795E26">getElementById</span><span style="color: #000000FF">(</span><span style="color: #A31515">&quot;container&quot;</span><span style="color: #000000FF">);</span>
+<span style="color: #000000FF">        </span><span style="color: #001080">container</span><span style="color: #000000FF">.</span><span style="color: #795E26">appendChild</span><span style="color: #000000FF">(</span><span style="color: #001080">player</span><span style="color: #000000FF">);</span>
+<span style="color: #000000FF">        </span><span style="color: #001080">player</span><span style="color: #000000FF">.</span><span style="color: #795E26">load</span><span style="color: #000000FF">(</span><span style="color: #A31515">&quot;movie.swf&quot;</span><span style="color: #000000FF">);</span>
+<span style="color: #000000FF">    });</span>
+<span style="color: #800000">&lt;/script&gt;</span>
+<span style="color: #800000">&lt;script</span><span style="color: #000000FF"> </span><span style="color: #FF0000">src</span><span style="color: #000000FF">=</span><span style="color: #0000FF">&quot;path/to/ruffle/ruffle.js&quot;</span><span style="color: #800000">&gt;&lt;/script&gt;</span>
+</code></pre>
+				<a href="#building-testing-or-contributing" id="building-testing-or-contributing" style="color: inherit; text-decoration: none;">
+					<h2>Building, testing or contributing</h2>
+				</a>
+				<p>Please see <a href="../../README.md">the ruffle-web README</a>.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Exports</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-enum">
+						<a href="enums/autoplay.html" class="tsd-kind-icon">Auto<wbr>Play</a>
+					</li>
+					<li class=" tsd-kind-enum">
+						<a href="enums/unmuteoverlay.html" class="tsd-kind-icon">Unmute<wbr>Overlay</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/publicapi.html" class="tsd-kind-icon">PublicAPI</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/ruffleembed.html" class="tsd-kind-icon">Ruffle<wbr>Embed</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/ruffleobject.html" class="tsd-kind-icon">Ruffle<wbr>Object</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/ruffleplayer.html" class="tsd-kind-icon">Ruffle<wbr>Player</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/sourceapi.html" class="tsd-kind-icon">SourceAPI</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/version.html" class="tsd-kind-icon">Version</a>
+					</li>
+					<li class=" tsd-kind-class">
+						<a href="classes/versionrange.html" class="tsd-kind-icon">Version<wbr>Range</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/baseloadoptions.html" class="tsd-kind-icon">Base<wbr>Load<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/config.html" class="tsd-kind-icon">Config</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/dataloadoptions.html" class="tsd-kind-icon">Data<wbr>Load<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/urlloadoptions.html" class="tsd-kind-icon">URLLoad<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#flash7_and_8_mimetype" class="tsd-kind-icon">FLASH7_<wbr>AND_<wbr>8_MIMETYPE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#flash_activex_classid" class="tsd-kind-icon">FLASH_<wbr>ACTIVEX_<wbr>CLASSID</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#flash_mimetype" class="tsd-kind-icon">FLASH_<wbr>MIMETYPE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#flash_movie_mimetype" class="tsd-kind-icon">FLASH_<wbr>MOVIE_<wbr>MIMETYPE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#flash_plugin" class="tsd-kind-icon">FLASH_<wbr>PLUGIN</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#futuresplash_mimetype" class="tsd-kind-icon">FUTURESPLASH_<wbr>MIMETYPE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="modules.html#ruffleshadowtemplate" class="tsd-kind-icon">ruffle<wbr>Shadow<wbr>Template</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#copytoaudiobuffer" class="tsd-kind-icon">copy<wbr>ToAudio<wbr>Buffer</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#installplugin" class="tsd-kind-icon">install<wbr>Plugin</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#isswffilename" class="tsd-kind-icon">is<wbr>Swf<wbr>Filename</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#loadruffle" class="tsd-kind-icon">load<wbr>Ruffle</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#lookupelement" class="tsd-kind-icon">lookup<wbr>Element</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#pluginpolyfill" class="tsd-kind-icon">plugin<wbr>Polyfill</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#polyfill" class="tsd-kind-icon">polyfill</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#publicpath" class="tsd-kind-icon">public<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="modules.html#registerelement" class="tsd-kind-icon">register<wbr>Element</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
